@@ -1,0 +1,11 @@
+episode_id,Agent1_DQN_score,Agent1_DQN_points_won,Agent2_Baseline_score,Agent2_Baseline_points_won,Agent3_Baseline_score,Agent3_Baseline_points_won,Agent4_Baseline_score,Agent4_Baseline_points_won,Agent1_DQN_epsilon_start_episode,Agent1_DQN_epsilon_end_episode,Agent1_DQN_total_steps_end_episode
+0,-1,0,-1,0,1,1,-1,0,1.0,1.0,0
+1,-1,0,-1,0,1,1,-1,0,1.0,1.0,0
+2,-1,0,-1,0,1,1,-1,0,1.0,1.0,0
+3,-1,0,-1,0,-1,0,1,1,1.0,1.0,0
+4,1,1,-1,0,-1,0,-1,0,1.0,1.0,0
+5,-1,0,-1,0,-1,0,1,1,1.0,1.0,0
+6,-1,0,-1,0,-1,0,1,1,1.0,1.0,0
+7,-1,0,-1,0,1,1,-1,0,1.0,1.0,0
+8,1,1,-1,0,-1,0,-1,0,1.0,1.0,0
+9,-1,0,-1,0,-1,0,1,1,1.0,1.0,0

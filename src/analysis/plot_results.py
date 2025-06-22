@@ -5,10 +5,6 @@ import seaborn as sns
 from pathlib import Path
 import os
 
-# Assuming config is accessible, otherwise pass RESULTS_DIR_BASE directly
-# from .. import config # This might cause issues if run as a script directly
-# Instead, it's safer to pass base_results_dir to functions or define it here if script is standalone
-
 def load_experiment_data(base_results_dir, experiment_id):
     """Loads metrics CSV for a given experiment ID."""
     results_file = Path(base_results_dir) / experiment_id / "episode_metrics.csv"

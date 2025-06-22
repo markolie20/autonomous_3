@@ -79,16 +79,16 @@ class DQNAgent:
         self.new_episode_started = True
 
     def act(self, stacked_frames_state, training=True):
-        self.total_steps_taken += 1
-        self._update_epsilon()
-
-        if training and random.random() < self.current_epsilon:
-            return np.random.randint(self.num_actions)
-        else:
-            with torch.no_grad():
-                state_tensor = torch.tensor(stacked_frames_state, dtype=torch.float32).unsqueeze(0).to(self.device)
-                q_values = self.policy_net(state_tensor)
-                return q_values.argmax(dim=1).item()
+        if training:
+            self.total_steps_taken += 1
+            self._update_epsilon()
+            if random.random() < self.current_epsilon:
+                return np.random.randint(self.num_actions)
+        # Always use greedy action in evaluation
+        with torch.no_grad():
+            state_tensor = torch.tensor(stacked_frames_state, dtype=torch.float32).unsqueeze(0).to(self.device)
+            q_values = self.policy_net(state_tensor)
+            return q_values.argmax(dim=1).item()
 
     def _update_epsilon(self):
         # Using exponential decay as in the original

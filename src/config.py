@@ -6,9 +6,9 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # --- General Settings ---
 AGENT_NAMES = ['Agent1_DQN', 'Agent2_Baseline', 'Agent3_Baseline', 'Agent4_Baseline']
-NUM_GAMES_PER_EXPERIMENT = 50 # Number of episodes per hyperparameter set
+NUM_GAMES_PER_EXPERIMENT = 10 # Number of episodes per hyperparameter set
 # TRAINING_MODE_ENABLED is always True for experiments, can be overridden if needed for evaluation runs
-DEFAULT_TRAINING_MODE = True 
+DEFAULT_TRAINING_MODE = False 
 
 # --- Paths ---
 VIDEO_DIR_BASE = PROJECT_ROOT / "videos_experiments" # Base directory for experiment videos
@@ -25,8 +25,8 @@ BASE_DQN_HYPERPARAMS = {
     "buffer_size": 50000,
     "eps_start": 1.0,
     "eps_end": 0.05,
-    "eps_decay_steps": 100000,
-    "learn_start_steps": 10000,
+    "eps_decay_steps": 200_000,
+    "learn_start_steps": 10_000,
     "frame_stack_size": 4,
     "img_height": 84,
     "img_width": 84,
@@ -42,33 +42,19 @@ BASE_DQN_HYPERPARAMS = {
 # The 'id' will be used for naming output folders.
 # Keys here will override those in BASE_DQN_HYPERPARAMS.
 EXPERIMENT_HYPERPARAMETER_SETS = [
-    {
-        "id": "lr0.00025_bs32_uf1000_g0.99", # Original DQN paper LR
-        "learning_rate": 0.00025,
-        "batch_size": 32,
-        "target_update_frequency": 1000, # or 10000 agent steps, often 4 environment steps for DQN
-        "gamma": 0.99,
-    },
+    # {
+    #     "id": "lr0.00025_bs32_uf1000_g0.99", # Original DQN paper LR
+    #     "learning_rate": 0.00025,
+    #     "batch_size": 32,
+    #     "target_update_frequency": 10000, # or 10000 agent steps, often 4 environment steps for DQN
+    #     "gamma": 0.99,
+    # },
     {
         "id": "lr0.0001_bs64_uf1000_g0.99",
         "learning_rate": 0.0001,
         "batch_size": 64, # Larger batch size
-        "target_update_frequency": 1000,
+        "target_update_frequency": 10000,
         "gamma": 0.99,
-    },
-    {
-        "id": "lr0.0001_bs32_uf500_g0.99",
-        "learning_rate": 0.0001,
-        "batch_size": 32,
-        "target_update_frequency": 500, # More frequent target updates
-        "gamma": 0.99,
-    },
-    {
-        "id": "lr0.0001_bs32_uf1000_g0.95",
-        "learning_rate": 0.0001,
-        "batch_size": 32,
-        "target_update_frequency": 1000,
-        "gamma": 0.95, # Less emphasis on future rewards
     },
     # Add more configurations as needed
     # Example: default values from BASE_DQN_HYPERPARAMS
